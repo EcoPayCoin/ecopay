@@ -1,0 +1,26 @@
+[Unit]
+Description=EcoPay's distributed currency daemon
+After=network.target
+
+[Service]
+User=ecopay
+Group=ecopay
+
+Type=forking
+PIDFile=/var/lib/ecopayd/ecopayd.pid
+
+ExecStart=/usr/bin/ecopayd -daemon -pid=/var/lib/ecopayd/ecopayd.pid \
+          -conf=/etc/ecopay/ecopay.conf -datadir=/var/lib/ecopayd
+
+ExecStop=-/usr/bin/ecopay-cli -conf=/etc/ecopay/ecopay.conf \
+         -datadir=/var/lib/ecopayd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

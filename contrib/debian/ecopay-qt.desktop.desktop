@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=EcoPay
+Comment=EcoPay P2P Cryptocurrency
+Exec=ecopay-qt %u
+Terminal=false
+Type=Application
+Icon=ecopay128
+MimeType=x-scheme-handler/ecopay;
+Categories=Office;Finance;
+Name[en_US]=ecopay-qt.desktop
